@@ -10,9 +10,11 @@ import {
     NavbarText,
     Container
 } from 'reactstrap';
+import {useSelector} from 'react-redux'
 
-const NavbarComponent = (props) => {
+const NavbarComponent = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const title = useSelector(state => state.user.title)
 
     const toggle = () => setIsOpen(!isOpen);
 
@@ -20,7 +22,7 @@ const NavbarComponent = (props) => {
         <div>
             <Navbar color="dark" dark expand="md">
                 <Container>
-                    <NavbarBrand href="/">{props.title}</NavbarBrand>
+                    <NavbarBrand>{title}</NavbarBrand>
                     <NavbarToggler onClick={toggle} />
                     <Collapse isOpen={isOpen} navbar>
                         <Nav className="mr-auto" navbar>

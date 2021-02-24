@@ -6,20 +6,16 @@ import CreateUserContainer from './containers/CreateUserContainer'
 import DetailUserContainer from './containers/DetailUserContainer'
 import EditUserContainer from './containers/EditUserContainer'
 import {BrowserRouter, Route} from "react-router-dom"
-import users from './mock/users.json'
 
 export default class App extends Component {
-  state = {
-    title: 'CRUD React Redux'
-  }
   render() {
     return (
       <div>
-        <NavbarComponent title={this.state.title} />
-        <JumbotronComponent title={this.state.title} />
+        <NavbarComponent />
+        <JumbotronComponent />
         <BrowserRouter>
           <Route path='/' exact>
-            <HomeContainer users={users} />
+            <HomeContainer />
           </Route>
           <Route path='/create' exact>
             <CreateUserContainer />

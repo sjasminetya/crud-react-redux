@@ -1,11 +1,13 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faInfo, faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
 import { Container, Button, Row, Col } from 'reactstrap';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { connect, useDispatch } from 'react-redux'
+import {getUser} from '../redux/actions'
 
 const { SearchBar } = Search;
 
@@ -35,7 +37,7 @@ const columns = [{
                         <FontAwesomeIcon icon={faInfo} /> Detail
                     </Button>
                 </Link>
-                
+
                 <Link to={'edit/' + row.id}>
                     <Button color='dark' className='mr-2'>
                         <FontAwesomeIcon icon={faEdit} /> Edit
@@ -55,8 +57,20 @@ const defaultSorted = [{
     order: 'asc'
 }];
 
+const mapStateToProps = (state) => {
+    return {
+        users: state.user.users,
+    }
+}
 
-export const TableComponent = (props) => {
+const TableComponent = (props) => {
+
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getUser())
+    }, [dispatch])
+
     return (
         <div>
             <Container className='mb-5'>
@@ -87,7 +101,7 @@ export const TableComponent = (props) => {
                                 </Row>
                                 <BootstrapTable
                                     {...props.baseProps}
-                                    pagination={ paginationFactory() }
+                                    pagination={paginationFactory()}
                                 />
                             </div>
                         )
@@ -97,3 +111,5 @@ export const TableComponent = (props) => {
         </div>
     )
 }
+
+export default connect(mapStateToProps, { getUser })(TableComponent);
