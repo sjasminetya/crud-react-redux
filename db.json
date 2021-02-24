@@ -1,0 +1,95 @@
+{
+    "users": [
+        {
+          "id": 1,
+          "nama": "shaula",
+          "alamat": "Bekasi",
+          "umur": 20,
+          "nohp": "081287423849"
+        },
+        {
+          "id": 2,
+          "nama": "shanon",
+          "alamat": "Jakarta",
+          "umur": 20,
+          "nohp": "58237582491"
+        },
+        {
+          "id": 3,
+          "nama": "darin",
+          "alamat": "Magelang",
+          "umur": 17,
+          "nohp": "02846183944"
+        },
+        {
+          "id": 4,
+          "nama": "keenan",
+          "alamat": "Yogyakarta",
+          "umur": 19,
+          "nohp": "95927483"
+        },
+        {
+          "id": 5,
+          "nama": "shean",
+          "alamat": "Tangerang",
+          "umur": 23,
+          "nohp": "6519294879"
+        },
+        {
+          "id": 6,
+          "nama": "terry",
+          "alamat": "Surabaya",
+          "umur": 10,
+          "nohp": "87519725914"
+        },
+        {
+          "id": 7,
+          "nama": "dian",
+          "alamat": "Semarang",
+          "umur": 45,
+          "nohp": "846579895921"
+        },
+        {
+          "id": 8,
+          "nama": "altair",
+          "alamat": "Palembang",
+          "umur": 45,
+          "nohp": "835619278581"
+        },
+        {
+          "id": 9,
+          "nama": "djuriah",
+          "alamat": "Bandung",
+          "umur": 77,
+          "nohp": "37567199561"
+        },
+        {
+          "id": 10,
+          "nama": "suharjan",
+          "alamat": "Bali",
+          "umur": 78,
+          "nohp": "824695111435"
+        },
+        {
+          "id": 11,
+          "nama": "alfi",
+          "alamat": "Magelang",
+          "umur": 20,
+          "nohp": "47629450621"
+        },
+        {
+          "id": 12,
+          "nama": "irma",
+          "alamat": "Magelang",
+          "umur": 21,
+          "nohp": "946527928352"
+        },
+        {
+          "id": 13,
+          "nama": "fira",
+          "alamat": "Bekasi",
+          "umur": 23,
+          "nohp": "651928456282"
+        }
+      ]      
+}
