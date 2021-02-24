@@ -1,5 +1,5 @@
 const initialState = {
-    users: [
+    getUsers: [
         {
             id: 1,
             nama: "nama",
@@ -15,7 +15,7 @@ const userReducer = (state = initialState, action) => {
     if (action.type === 'GET_USER') {
         return {
             ...state,
-            users: action.payload.users
+            getUsers: action.payload
         }
     } else {
         return state
