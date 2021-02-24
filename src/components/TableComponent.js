@@ -1,10 +1,11 @@
 import React from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEdit, faInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
-import { Container, Button } from 'reactstrap';
+import { faEdit, faInfo, faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
+import { Container, Button, Row, Col } from 'reactstrap';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
+import {Link} from 'react-router-dom'
 
 const { SearchBar } = Search;
 
@@ -29,13 +30,17 @@ const columns = [{
     formatter: (rowContent, row) => {
         return (
             <div>
-                <Button color='dark' className='mr-2'>
-                    <FontAwesomeIcon icon={faInfo} /> Detail
-                </Button>
-
-                <Button color='dark' className='mr-2'>
-                    <FontAwesomeIcon icon={faEdit} /> Edit
-                </Button>
+                <Link to={'/detail/' + row.id}>
+                    <Button color='dark' className='mr-2'>
+                        <FontAwesomeIcon icon={faInfo} /> Detail
+                    </Button>
+                </Link>
+                
+                <Link to={'edit/' + row.id}>
+                    <Button color='dark' className='mr-2'>
+                        <FontAwesomeIcon icon={faEdit} /> Edit
+                    </Button>
+                </Link>
 
                 <Button color='dark' className='mr-2'>
                     <FontAwesomeIcon icon={faTrash} /> Delete
@@ -66,9 +71,20 @@ export const TableComponent = (props) => {
                     {
                         props => (
                             <div>
-                                <div className='float-right'>
-                                    <SearchBar {...props.searchProps} />
-                                </div>
+                                <Row>
+                                    <Col>
+                                        <Link to='/create'>
+                                            <Button color='dark' className='mr-2'>
+                                                <FontAwesomeIcon icon={faUserPlus} /> Create User
+                                            </Button>
+                                        </Link>
+                                    </Col>
+                                    <Col>
+                                        <div className='float-right'>
+                                            <SearchBar {...props.searchProps} />
+                                        </div>
+                                    </Col>
+                                </Row>
                                 <BootstrapTable
                                     {...props.baseProps}
                                     pagination={ paginationFactory() }
