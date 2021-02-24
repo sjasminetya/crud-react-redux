@@ -54,7 +54,7 @@ const defaultSorted = [{
 export const TableComponent = (props) => {
     return (
         <div>
-            <Container>
+            <Container className='mb-5'>
                 <ToolkitProvider
                     bootstrap4
                     keyField="id"
