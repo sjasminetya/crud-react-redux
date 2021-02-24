@@ -3,24 +3,30 @@ import BootstrapTable from 'react-bootstrap-table-next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faInfo, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Container, Button } from 'reactstrap';
+import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
+
+const { SearchBar } = Search;
 
 const columns = [{
-  dataField: 'id',
-  text: 'ID',
-  headerStyle: () => {
-      return {width: '5%'}
-  }
+    dataField: 'id',
+    text: 'ID',
+    sort: true,
+    headerStyle: () => {
+        return { width: '5%' }
+    }
 }, {
-  dataField: 'nama',
-  text: 'Nama'
+    dataField: 'nama',
+    text: 'Nama',
+    sort: true
 }, {
-  dataField: 'alamat',
-  text: 'Alamat'
+    dataField: 'alamat',
+    text: 'Alamat',
+    sort: true
 }, {
     dataField: 'Link',
     text: 'Action',
     formatter: (rowContent, row) => {
-        return  (
+        return (
             <div>
                 <Button color='dark' className='mr-2'>
                     <FontAwesomeIcon icon={faInfo} /> Detail
@@ -38,11 +44,37 @@ const columns = [{
     }
 }];
 
+const defaultSorted = [{
+    dataField: 'id',
+    order: 'asc'
+}];
+
+
 export const TableComponent = (props) => {
     return (
         <div>
             <Container>
-                <BootstrapTable keyField='id' data={ props.users } columns={ columns } />
+                <ToolkitProvider
+                    bootstrap4
+                    keyField="id"
+                    data={props.users}
+                    columns={columns}
+                    search
+                    defaultSorted={defaultSorted}
+                >
+                    {
+                        props => (
+                            <div>
+                                <div className='float-right'>
+                                    <SearchBar {...props.searchProps} />
+                                </div>
+                                <BootstrapTable
+                                    {...props.baseProps}
+                                />
+                            </div>
+                        )
+                    }
+                </ToolkitProvider>
             </Container>
         </div>
     )
