@@ -21,8 +21,10 @@ export const getUserDetail = (id) => (dispatch) => {
     })
 }
 
-export const deleteUserDetail = () => (dispatch) => {
+export const deleteDataUser = () => (dispatch) => {
     dispatch({type: 'GET_USER_DETAIL', payload: {data: false, errorMessage: false}})
+
+    dispatch({type: 'ADD_USER', payload: {data: false, errorMessage: false}})
 }
 
 export const addUser = (data) => (dispatch) => {
@@ -31,6 +33,6 @@ export const addUser = (data) => (dispatch) => {
         dispatch({type: 'ADD_USER', payload: {data: res.data, errorMessage: false}})
     })
     .catch(err => {
-        dispatch({type: 'ADD_USER', payload: {data: false, errorMessage: err.response.statusText}})
+        dispatch({type: 'ADD_USER', payload: {data: false, errorMessage: err.message}})
     })
 }
