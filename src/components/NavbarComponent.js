@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import {
     Collapse,
     Navbar,
@@ -9,7 +9,7 @@ import {
     NavLink,
     NavbarText,
     Container
-} from 'reactstrap';
+} from 'reactstrap'
 import {useSelector} from 'react-redux'
 
 const NavbarComponent = () => {
