@@ -7,49 +7,31 @@ import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
+import Swal from 'sweetalert2'
+import { deleteUser } from '../redux/actions';
 
 const { SearchBar } = Search;
 
-const columns = [{
-    dataField: 'id',
-    text: 'ID',
-    sort: true,
-    headerStyle: () => {
-        return { width: '5%' }
-    }
-}, {
-    dataField: 'nama',
-    text: 'Nama',
-    sort: true
-}, {
-    dataField: 'alamat',
-    text: 'Alamat',
-    sort: true
-}, {
-    dataField: 'Link',
-    text: 'Action',
-    formatter: (rowContent, row) => {
-        return (
-            <div>
-                <Link to={'/detail/' + row.id}>
-                    <Button color='dark' className='mr-2'>
-                        <FontAwesomeIcon icon={faInfo} /> Detail
-                    </Button>
-                </Link>
-
-                <Link to={'edit/' + row.id}>
-                    <Button color='dark' className='mr-2'>
-                        <FontAwesomeIcon icon={faEdit} /> Edit
-                    </Button>
-                </Link>
-
-                <Button color='dark' className='mr-2'>
-                    <FontAwesomeIcon icon={faTrash} /> Delete
-                </Button>
-            </div>
-        )
-    }
-}];
+const handleClick = (dispatch, id) => {
+    Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+    }).then((result) => {
+        if (result.isConfirmed) {
+            dispatch(deleteUser(id))
+            Swal.fire(
+                'Deleted!',
+                'User has been deleted.',
+                'success'
+            )
+        }
+    })
+}
 
 const defaultSorted = [{
     dataField: 'id',
@@ -64,6 +46,46 @@ const mapStateToProps = (state) => {
 }
 
 const TableComponent = (props) => {
+    const columns = [{
+        dataField: 'id',
+        text: 'ID',
+        sort: true,
+        headerStyle: () => {
+            return { width: '5%' }
+        }
+    }, {
+        dataField: 'nama',
+        text: 'Nama',
+        sort: true
+    }, {
+        dataField: 'alamat',
+        text: 'Alamat',
+        sort: true
+    }, {
+        dataField: 'Link',
+        text: 'Action',
+        formatter: (rowContent, row) => {
+            return (
+                <div>
+                    <Link to={'/detail/' + row.id}>
+                        <Button color='dark' className='mr-2'>
+                            <FontAwesomeIcon icon={faInfo} /> Detail
+                        </Button>
+                    </Link>
+    
+                    <Link to={'edit/' + row.id}>
+                        <Button color='dark' className='mr-2'>
+                            <FontAwesomeIcon icon={faEdit} /> Edit
+                        </Button>
+                    </Link>
+    
+                    <Button color='dark' className='mr-2' onClick={() => handleClick(props.dispatch, row.id)}>
+                        <FontAwesomeIcon icon={faTrash} /> Delete
+                    </Button>
+                </div>
+            )
+        }
+    }];
     return (
         <div>
             <Container className='mb-5'>
@@ -102,16 +124,16 @@ const TableComponent = (props) => {
                         }
                     </ToolkitProvider>
                 ) : (
-                    <div className='text-center'>
-                        {props.errorUsersList ? (
-                            <Alert color="danger">
-                                {props.errorUsersList}
-                            </Alert>
-                        ) : (
-                            <Spinner color="dark" />
-                        )}
-                    </div>
-                )}
+                        <div className='text-center'>
+                            {props.errorUsersList ? (
+                                <Alert color="danger">
+                                    {props.errorUsersList}
+                                </Alert>
+                            ) : (
+                                    <Spinner color="dark" />
+                                )}
+                        </div>
+                    )}
             </Container>
         </div>
     )

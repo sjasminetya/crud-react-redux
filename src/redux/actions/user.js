@@ -46,3 +46,13 @@ export const updateUser = (id, data) => (dispatch) => {
         dispatch({type: 'UPDATE_USER', payload: {data: false, errorMessage: err.message}})
     })
 }
+
+export const deleteUser = (id) => (dispatch) => {
+    axios.delete(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`)
+    .then(res => {
+        console.log(res)
+    })
+    .catch(err => {
+        console.log(err)
+    })
+}

@@ -33,8 +33,7 @@ const userReducer = (state = initialState, action) => {
             getResponDataUser: action.payload.data,
             errorResponDataUser: action.payload.errorMessage
         }
-    }
-    else {
+    } else {
         return state
     }
 }
