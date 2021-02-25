@@ -27,3 +27,9 @@ Install all dependencies
 ```
 npm install
 ```
+
+## Add env
+Create .env.local file in your root project folder.
+```
+REACT_APP_FAKE_API = 
+```
