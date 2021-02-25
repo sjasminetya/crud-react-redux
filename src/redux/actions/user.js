@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const getUser = () => (dispatch) => {
-    axios.get('http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users')
+    axios.get(`${process.env.REACT_APP_FAKE_API}`)
     .then(res => {
         dispatch({type: 'GET_USER', payload: {data: res.data, errorMessage: false}})
     })
@@ -12,7 +12,7 @@ export const getUser = () => (dispatch) => {
 }
 
 export const getUserDetail = (id) => (dispatch) => {
-    axios.get(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`)
+    axios.get(`${process.env.REACT_APP_FAKE_API}/${id}`)
     .then(res => {
         dispatch({type: 'GET_USER_DETAIL', payload: {data: res.data, errorMessage: false}})
     })
@@ -28,7 +28,7 @@ export const deleteDataUser = () => (dispatch) => {
 }
 
 export const addUser = (data) => (dispatch) => {
-    axios.post(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users`, data)
+    axios.post(`${process.env.REACT_APP_FAKE_API}`, data)
     .then(res => {
         dispatch({type: 'ADD_USER', payload: {data: res.data, errorMessage: false}})
     })
@@ -38,7 +38,7 @@ export const addUser = (data) => (dispatch) => {
 }
 
 export const updateUser = (id, data) => (dispatch) => {
-    axios.patch(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`, data)
+    axios.patch(`${process.env.REACT_APP_FAKE_API}/${id}`, data)
     .then(res => {
         dispatch({type: 'UPDATE_USER', payload: {data: res.data, errorMessage: false}})
     })
@@ -48,7 +48,7 @@ export const updateUser = (id, data) => (dispatch) => {
 }
 
 export const deleteUser = (id) => (dispatch) => {
-    axios.delete(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`)
+    axios.delete(`${process.env.REACT_APP_FAKE_API}/${id}`)
     .then(res => {
         console.log(res)
     })
