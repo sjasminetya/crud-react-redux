@@ -22,3 +22,7 @@ export const getUserDetail = (id) => (dispatch) => {
         dispatch({type: 'GET_USER_DETAIL', payload: {data: false, errorMessage: err.response.statusText}})
     })
 }
+
+export const deleteUserDetail = () => (dispatch) => {
+    dispatch({type: 'GET_USER_DETAIL', payload: {data: false, errorMessage: false}})
+}

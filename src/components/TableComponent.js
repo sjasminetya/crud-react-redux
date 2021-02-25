@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import BootstrapTable from 'react-bootstrap-table-next';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faInfo, faTrash, faUserPlus } from '@fortawesome/free-solid-svg-icons';
@@ -6,8 +6,7 @@ import { Container, Button, Row, Col, Spinner, Alert } from 'reactstrap';
 import ToolkitProvider, { Search } from 'react-bootstrap-table2-toolkit';
 import paginationFactory from 'react-bootstrap-table2-paginator';
 import { Link } from 'react-router-dom'
-import { connect, useDispatch } from 'react-redux'
-import { getUser } from '../redux/actions'
+import { connect } from 'react-redux'
 
 const { SearchBar } = Search;
 
@@ -65,13 +64,6 @@ const mapStateToProps = (state) => {
 }
 
 const TableComponent = (props) => {
-
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        dispatch(getUser())
-    }, [dispatch])
-
     return (
         <div>
             <Container className='mb-5'>
@@ -125,4 +117,4 @@ const TableComponent = (props) => {
     )
 }
 
-export default connect(mapStateToProps, { getUser })(TableComponent);
+export default connect(mapStateToProps, null)(TableComponent);
