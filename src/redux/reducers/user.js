@@ -27,6 +27,12 @@ const userReducer = (state = initialState, action) => {
             getResponDataUser: action.payload.data,
             errorResponDataUser: action.payload.errorMessage
         }
+    } else if (action.type === 'UPDATE_USER') {
+        return {
+            ...state,
+            getResponDataUser: action.payload.data,
+            errorResponDataUser: action.payload.errorMessage
+        }
     }
     else {
         return state

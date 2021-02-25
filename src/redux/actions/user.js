@@ -36,3 +36,13 @@ export const addUser = (data) => (dispatch) => {
         dispatch({type: 'ADD_USER', payload: {data: false, errorMessage: err.message}})
     })
 }
+
+export const updateUser = (id, data) => (dispatch) => {
+    axios.patch(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`, data)
+    .then(res => {
+        dispatch({type: 'UPDATE_USER', payload: {data: res.data, errorMessage: false}})
+    })
+    .catch(err => {
+        dispatch({type: 'UPDATE_USER', payload: {data: false, errorMessage: err.message}})
+    })
+}
