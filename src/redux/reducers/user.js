@@ -1,23 +1,26 @@
 const initialState = {
-    getUsers: [
-        {
-            id: 1,
-            nama: "nama",
-            alamat: "alamat",
-            umur: 1,
-            nohp: "nohp"
-          }
-    ],
-    title: 'CRUD React Redux'
+    getUsers: false,
+    errorUsersList: false,
+    title: 'CRUD React Redux',
+    userDetail: false,
+    errorUserDetail: false
 }
 
 const userReducer = (state = initialState, action) => {
     if (action.type === 'GET_USER') {
         return {
             ...state,
-            getUsers: action.payload
+            getUsers: action.payload.data,
+            errorUsersList: action.payload.errorMessage
         }
-    } else {
+    } else if (action.type === 'GET_USER_DETAIL') {
+        return {
+            ...state,
+            userDetail: action.payload.data,
+            errorUserDetail: action.payload.errorMessage
+        }
+    } 
+    else {
         return state
     }
 }
