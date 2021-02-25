@@ -17,3 +17,13 @@
 * **[`redux-form`](https://redux-form.com/5.3.1/#/?_k=p0zjiz)**
 * **[`react-bootstrap-table`](https://react-bootstrap-table.github.io/react-bootstrap-table2)**
 * **[`sweetalert`](https://sweetalert2.github.io)**
+
+## Getting started
+Clone the repository
+```
+git clone https://github.com/sjasminetya/crud-react-redux.git
+```
+Install all dependencies
+```
+npm install
+```
