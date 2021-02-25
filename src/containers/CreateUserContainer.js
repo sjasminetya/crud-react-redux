@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import { Container } from 'reactstrap'
 import { BackComponent } from '../components/BackComponent'
 import FormComponent from '../components/FormComponent'
+import {connect} from 'react-redux'
+import { addUser } from '../redux/actions'
 
-export default class CreateUserContainer extends Component {
+class CreateUserContainer extends Component {
     handleSubmit (data) {
-        console.log(data)
+        this.props.dispatch(addUser(data))
     }
     render() {
         return (
@@ -17,3 +19,5 @@ export default class CreateUserContainer extends Component {
         )
     }
 }
+
+export default connect()(CreateUserContainer)

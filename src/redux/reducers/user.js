@@ -1,9 +1,11 @@
 const initialState = {
+    title: 'CRUD React Redux',
     getUsers: false,
     errorUsersList: false,
-    title: 'CRUD React Redux',
     userDetail: false,
-    errorUserDetail: false
+    errorUserDetail: false,
+    getResponDataUser: false,
+    errorResponDataUser: false
 }
 
 const userReducer = (state = initialState, action) => {
@@ -19,7 +21,13 @@ const userReducer = (state = initialState, action) => {
             userDetail: action.payload.data,
             errorUserDetail: action.payload.errorMessage
         }
-    } 
+    } else if (action.type === 'ADD_USER') {
+        return {
+            ...state,
+            getResponDataUser: action.payload.data,
+            errorResponDataUser: action.payload.errorMessage
+        }
+    }
     else {
         return state
     }

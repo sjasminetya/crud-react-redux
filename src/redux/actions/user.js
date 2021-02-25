@@ -14,15 +14,23 @@ export const getUser = () => (dispatch) => {
 export const getUserDetail = (id) => (dispatch) => {
     axios.get(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users/${id}`)
     .then(res => {
-        console.log(res.data)
         dispatch({type: 'GET_USER_DETAIL', payload: {data: res.data, errorMessage: false}})
     })
     .catch(err => {
-        console.log(err.response)
         dispatch({type: 'GET_USER_DETAIL', payload: {data: false, errorMessage: err.response.statusText}})
     })
 }
 
 export const deleteUserDetail = () => (dispatch) => {
     dispatch({type: 'GET_USER_DETAIL', payload: {data: false, errorMessage: false}})
+}
+
+export const addUser = (data) => (dispatch) => {
+    axios.post(`http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users`, data)
+    .then(res => {
+        dispatch({type: 'ADD_USER', payload: {data: res.data, errorMessage: false}})
+    })
+    .catch(err => {
+        dispatch({type: 'ADD_USER', payload: {data: false, errorMessage: err.response.statusText}})
+    })
 }
