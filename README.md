@@ -31,5 +31,5 @@ npm install
 ## Add env
 Create .env.local file in your root project folder.
 ```
-REACT_APP_FAKE_API = 
+REACT_APP_FAKE_API = http://my-json-server.typicode.com/sjasminetya/crud-react-redux/users
 ```
